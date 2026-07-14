@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - Nguyễn Nhất Trung Hậu</title>
+    <style>
+        :root {
+            --glass-bg: rgba(10, 25, 47, 0.65); /* Xanh đen xuyên thấu */
+            --glass-border: rgba(255, 255, 255, 0.15);
+            --accent-color: #64ffda; /* Màu nhấn sáng nổi bật trên nền tối */
+            --text-main: #e6f1ff;
+            --text-muted: #8892b0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            /* Đặt một ảnh nền tối hoặc màu gradient mờ để hiệu ứng xuyên thấu hoạt động tốt nhất */
+            background: linear-gradient(135deg, #020c1b 0%, #112240 100%);
+            color: var(--text-main);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .cv-wrapper {
+            max-width: 1000px;
+            width: 100%;
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+            border-radius: 15px;
+            display: flex;
+            flex-wrap: wrap;
+            overflow: hidden;
+        }
+
+        /* Sidebar (Cột trái) */
+        .sidebar {
+            width: 35%;
+            padding: 40px 30px;
+            background: rgba(2, 12, 27, 0.4);
+            border-right: 1px solid var(--glass-border);
+        }
+
+        .profile-section {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        /* Chỗ chèn ảnh đại diện */
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--accent-color);
+            margin-bottom: 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .profile-name {
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .profile-title {
+            font-size: 16px;
+            color: var(--accent-color);
+            font-weight: 500;
+        }
+
+        .sidebar-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-bottom: 15px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid var(--accent-color);
+            display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .contact-info {
+            margin-bottom: 35px;
+        }
+
+        .contact-item {
+            margin-bottom: 15px;
+            font-size: 14px;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            color: var(--text-muted);
+        }
+
+        /* Main Content (Cột phải) */
+        .main-content {
+            width: 65%;
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 22px;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: var(--glass-border);
+        }
+
+        .summary-text {
+            font-size: 16px;
+            text-align: justify;
+            font-style: italic;
+            color: var(--text-main);
+            border-left: 4px solid var(--accent-color);
+            padding-left: 15px;
+            background: rgba(100, 255, 218, 0.05);
+            padding: 15px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .experience-item {
+            margin-bottom: 25px;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid transparent;
+            transition: border 0.3s ease;
+        }
+
+        .experience-item:hover {
+            border: 1px solid var(--glass-border);
+        }
+
+        .job-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-bottom: 5px;
+        }
+
+        .job-meta {
+            font-size: 14px;
+            color: var(--accent-color);
+            margin-bottom: 10px;
+        }
+
+        /* Grid hiển thị sở thích */
+        .hobbies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .hobby-card {
+            background: rgba(2, 12, 27, 0.4);
+            border: 1px solid var(--glass-border);
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .hobby-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .hobby-card img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 6px;
+            margin-bottom: 12px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .hobby-card p {
+            font-size: 14px;
+            color: var(--text-main);
+        }
+
+        /* Responsive cho thiết bị di động */
+        @media (max-width: 768px) {
+            .sidebar, .main-content {
+                width: 100%;
+                border-right: none;
+            }
+            .sidebar {
+                border-bottom: 1px solid var(--glass-border);
+            }
+            body {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="cv-wrapper">
+    <div class="sidebar">
+        <div class="profile-section">
+            <img src="anh-dai-dien.jpg" alt="Ảnh cá nhân" class="profile-img">
+            <h1 class="profile-name">Nguyễn Nhất Trung Hậu [cite: 5]</h1>
+            <h2 class="profile-title">Giáo viên Toán [cite: 11]</h2>
+        </div>
+
+        <div class="contact-info">
+            <h3 class="sidebar-title">Liên hệ</h3>
+            <div class="contact-item">
+                📞 <span>0971738655 [cite: 6]</span>
+            </div>
+            <div class="contact-item">
+                ✉️ <span>nnth2107@gmail.com [cite: 7]</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-content">
+        
+        <div class="section">
+            <h3 class="section-title">Giới thiệu</h3>
+            <div class="summary-text">
+                "Một linh hồn lãng mạn bị trói chặt vào một thân xác khổ sở vì tình" [cite: 9]
+            </div>
+        </div>
+
+        <div class="section">
+            <h3 class="section-title">Nghề nghiệp & Kinh nghiệm</h3>
+            <div class="experience-item">
+                <div class="job-title">Giáo viên Toán [cite: 11]</div>
+                <div class="job-meta">Trường THCS và THPT Phú Thành A [cite: 12]</div>
+                <p style="color: var(--text-muted); font-size: 14px;">Thời gian: 01/02/2025 – Nay [cite: 12]</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h3 class="section-title">Sở thích cá nhân</h3>
+            <div class="hobbies-grid">
+                
+                <div class="hobby-card">
+                    <img src="lien-quan.jpg" alt="Liên Quân">
+                    <p>Chơi liên quân [cite: 14]</p>
+                </div>
+
+                <div class="hobby-card">
+                    <img src="tien-nghich.jpg" alt="Tiên Nghịch">
+                    <p>Xem hoạt hình: Tiên Ngịch [cite: 15]</p>
+                </div>
+
+                <div class="hobby-card">
+                    <img src="che-lan-vien.jpg" alt="Chế Lan Viên">
+                    <p>Thích đọc thơ của cụ Chế Lan Viên nhưng sợ những nhận định của cụ [cite: 16]</p>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>
